@@ -1,6 +1,7 @@
 {
   "name": "multi-keywords-highlighter-workspace",
   "version": "0.0.0",
+  "repository": "dylannnn/multi-keywords-highlighter-workspace",
   "scripts": {
     "==== Sandbox =====": "============================================",
     "start:sandbox": "ng serve sandbox -o",
@@ -13,11 +14,32 @@
     "develop:lib": "ng build multi-keywords-highlighter --watch",
     "develop:scss-bundle": "scss-bundle -c projects/multi-keywords-highlighter/scss-bundle.config.json -p projects/multi-keywords-highlighter",
     "build:lib": "ng build multi-keywords-highlighter && scss-bundle -c projects/multi-keywords-highlighter/scss-bundle.config.json -p projects/multi-keywords-highlighter",
-    "test:lib": "ng test multi-keywords-highlighter",
+    "test:lib": "ng test multi-keywords-highlighter --code-coverage ",
+    "test:lib:ci": "ng test multi-keywords-highlighter --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint:lib": "ng lint multi-keywords-highlighter",
-    "e2e:lib": "ng e2e multi-keywords-highlighter"
+    "e2e:lib": "ng e2e multi-keywords-highlighter",
+    "release:local": "semantic-release --no-ci",
+    "release": "semantic-release"
   },
-  "private": true,
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "dist/multi-keywords-highlighter"
+        }
+      ],
+      "@semantic-release/release-notes-generator"
+    ]
+  },
+  "engines": {
+    "node": ">= 12",
+    "npm": ">= 6"
+  },
   "dependencies": {
     "@angular/animations": "~11.2.0",
     "@angular/cdk": "^11.2.0",
@@ -38,6 +60,7 @@
     "@angular-devkit/build-angular": "~0.1102.0",
     "@angular/cli": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
+    "@semantic-release/changelog": "^5.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
@@ -52,6 +75,7 @@
     "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
     "scss-bundle": "^3.1.2",
+    "semantic-release": "^17.3.9",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.1.2"
