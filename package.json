@@ -18,11 +18,11 @@
     "test:lib:ci": "ng test multi-keywords-highlighter --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint:lib": "ng lint multi-keywords-highlighter",
     "e2e:lib": "ng e2e multi-keywords-highlighter",
-    "release:local": "semantic-release --no-ci",
+    "release:local": "semantic-release --no-ci --debug",
     "release": "semantic-release"
   },
   "release": {
-    "branch": "master",
+    "branches": ["main"],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/changelog",

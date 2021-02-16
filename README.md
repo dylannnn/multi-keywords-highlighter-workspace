@@ -1,5 +1,7 @@
 # Multi Keywords Highlighter Workspace
 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 Multi Keywords Highlighter is an Angular library that build together with Angular material.
 
 It's create a fun way for searching an Angular web page for the interesting bits by input a keyword or a keyword list. This library could be assistive for searching heavy data page [ At least for me :) ].
