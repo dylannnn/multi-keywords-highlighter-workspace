@@ -1,0 +1,28 @@
+.mat-menu-panel {
+  &.mh {
+    &__menu {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.mh {
+  &__menu {
+    padding: 0 1rem 0.25rem;
+  }
+  &__text {
+    font-size: 12px;
+    &-tint {
+      color: lighten($color: #000000, $amount: 60)
+    }
+  }
+  &__version {
+    font-size: 12px;
+  }
+  &__keyword {
+    &__list {
+      width: 100%;
+    }
+  }
+}

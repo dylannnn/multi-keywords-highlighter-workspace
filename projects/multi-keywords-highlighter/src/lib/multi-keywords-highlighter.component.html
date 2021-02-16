@@ -1,0 +1,52 @@
+<button mat-icon-button [color]="themeColor" [matTooltip]="appName" aria-label="Multi keywords highlighter" (click)="showHighlighter()"
+  #paletteMenuTrigger [matMenuTriggerFor]="menu" (menuOpened)="onOpened()" (menuClosed)="onClosed()">
+  <mat-icon [matBadge]="keywordCount" [matBadgeHidden]="keywordCount === 0"
+  matBadgePosition="after" matBadgeColor="accent">highlight</mat-icon>
+</button>
+<mat-menu backdropClass="mh__backdrop" class="mh__menu" #menu="matMenu" xPosition="before" yPosition="below"
+  #paletteMenu>
+  <div fxLayout="column" class="mh__panel" (click)="$event.stopPropagation()" [ngStyle]="{'minWidth': minWidth + 'px'}">
+    <div class="mh__header" fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="mh__text">{{ appName }} <small class="mh__version mh__text-tint">{{ appVersion }}</small></span>
+      <div fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="10px">
+        <ng-container *ngIf="showColorPalette">
+          <button mat-icon-button [color]="themeColor" aria-label="Color theme" [matMenuTriggerFor]="colorMenu">
+            <mat-icon>color_lens</mat-icon>
+          </button>
+          <mat-menu backdropClass="mh__backdrop" class="mh__menu" #colorMenu="matMenu" xPosition="before"
+            yPosition="below">
+            <div fxLayout="column" (click)="$event.stopPropagation()">
+              <lib-color-palette></lib-color-palette>
+            </div>
+          </mat-menu>
+        </ng-container>
+        <mat-slide-toggle [color]="themeColor" [checked]="isHighlighted" (change)="onToggle($event)">
+          <span class="mh__text">On</span>
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div class="mh__body" fxLayout="column">
+      <div class="mh__content">
+        <mat-form-field class="mh__keyword__list">
+          <mat-chip-list #keywordListElm aria-label="Keyword list">
+            <mat-chip *ngFor="let keyword of keywordList; let i = index" selectable="true" [removable]="removable"
+              (removed)="removeKeyword(keyword)" [ngStyle]="{ 'background-color': keyword?.color }">
+              <span [ngStyle]="{ 'color': chipTextColor }">{{ keyword.name }}</span>
+              <mat-icon matChipRemove *ngIf="removable" [ngStyle]="{ 'color': chipIconColor }">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="{{ keywordPlaceholder }}" [matChipInputFor]="keywordListElm"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addKeyword($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="mh__text mh__text-tint">Separate by comma [,] or enter key</span>
+        <span class="mh__text mh__text-tint">
+          <span>&copy; {{ copyright }} </span>
+          <span>{{ currentYear | date:"yyyy" }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</mat-menu>
