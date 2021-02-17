@@ -97,12 +97,12 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * Keyword quantity
    */
-  keywordQuantity: number = 0;
+  keywordQuantity = 0;
 
   /**
    * Is highlighted, check the highlighted checkbox
    */
-  isHighlighted: boolean = false;
+  isHighlighted = false;
 
   /**
    * Copyright year
@@ -214,7 +214,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * Get a random color from the color palette
    */
-  private getRandomColor() {
+  private getRandomColor(): string {
     return this.colorPalette[Math.floor((Math.random() * this.colorPalette.length))];
   }
 
@@ -222,7 +222,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * On check the highlighter checkbox
    * @param event Material slide toggle event
    */
-  onToggle(event: MatSlideToggleChange) {
+  onToggle(event: MatSlideToggleChange): void {
     console.log('onHighlight: ', event.checked);
     this.toggleLibTheme(event.checked);
     // this.mService.toggleHighlighter(event.checked);
@@ -244,7 +244,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
       this.materialThemeColor = MATERIAL_COLOR.PRIMARY;
   }
 
-  hightlightKeywords() {
+  hightlightKeywords(): void {
     console.log('[LIB - hightlightKeywords]');
   }
 }

@@ -10,9 +10,9 @@ echo build lib
 npm run build:lib
 
 echo push tags
-# git push --follow-tags origin master
+git push --follow-tags origin main
 
 echo push to npm
 cp README.md ./dist/multi-keywords-highlighter/
 cd ./dist/multi-keywords-highlighter/
-# npm publish --access=public
+npm publish --access=public

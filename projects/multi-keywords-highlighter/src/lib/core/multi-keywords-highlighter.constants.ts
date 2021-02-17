@@ -16,7 +16,7 @@ export const CONFIG = {
   MIN_WIDTH: 340,
   SHOW_COLOR_PALETTE: false,
   INIT_KEYWORDS: true
-}
+};
 
 export enum MATERIAL_COLOR {
   PRIMARY = 'primary',

@@ -69,6 +69,14 @@ import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'multi-keywords-h
   ...
 ```
 
+## Roadmap
+
+- [ ] Search
+- [ ] Highlight
+- [ ] Save to localstorage
+- [ ] Themes
+- [ ] CI/CD Release
+
 
 ## Issues?
 
