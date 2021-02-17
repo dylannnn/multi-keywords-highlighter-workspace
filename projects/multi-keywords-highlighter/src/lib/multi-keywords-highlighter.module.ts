@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MultiKeywordsHighlighterConfig, MULTI_KEYWORDS_HIGHLIGHTER_CONFIG } from './core';
+import { MultiKeywordsHighlighterConfig, MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN } from './core';
 import { ColorPaletteModule } from './color-palette/color-palette.module';
 import { MaterialModule } from './material/material.module';
 import { MultiKeywordsHighlighterComponent } from './multi-keywords-highlighter.component';
@@ -29,12 +29,12 @@ export class MultiKeywordsHighlighterModule {
     }
   }
 
-  static forRoot(config: MultiKeywordsHighlighterConfig): ModuleWithProviders<MultiKeywordsHighlighterModule> {
+  static forRoot(config: Partial<MultiKeywordsHighlighterConfig>): ModuleWithProviders<MultiKeywordsHighlighterModule> {
     return {
       ngModule: MultiKeywordsHighlighterModule,
       providers: [
         {
-          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
           useValue: config
         }
       ]

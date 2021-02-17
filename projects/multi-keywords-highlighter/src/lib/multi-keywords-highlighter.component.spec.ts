@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
-  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
   MATERIAL_COLOR,
   MultiKeywordsHighlighterConfig
 } from './core';
@@ -16,7 +16,7 @@ import { MultiKeywordsHighlighterComponent } from './multi-keywords-highlighter.
 describe('MultiKeywordsHighlighterComponent', () => {
   let component: MultiKeywordsHighlighterComponent;
   let fixture: ComponentFixture<MultiKeywordsHighlighterComponent>;
-  const config: MultiKeywordsHighlighterConfig = {
+  const config: Partial<MultiKeywordsHighlighterConfig> = {
     themeColor: MATERIAL_COLOR.PRIMARY
   };
 
@@ -34,7 +34,7 @@ describe('MultiKeywordsHighlighterComponent', () => {
       declarations: [ MultiKeywordsHighlighterComponent ],
       providers: [
         {
-          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
           useValue: config
         }
       ]

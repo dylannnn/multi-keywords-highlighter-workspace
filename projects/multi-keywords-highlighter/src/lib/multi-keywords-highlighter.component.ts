@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { COLOR, COLOR_PALETTE, CONFIG, IKeyword, MATERIAL_COLOR } from './core';
+import { COLOR, COLOR_PALETTE, defaultConfig, DEFAULT_CONFIG, IKeyword, LibConfig, MATERIAL_COLOR, MultiKeywordsHighlighterConfig, MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN } from './core';
 import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatChipInputEvent } from '@angular/material/chips';
@@ -24,7 +24,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * Copyright
    */
-  @Input() copyright = CONFIG.COPYRIGHT.AUTHOR;
+  @Input() copyright = LibConfig.COPYRIGHT_AUTHOR;
 
   /**
    * Material theme color
@@ -47,7 +47,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * Keyword Placeholder
    * @description The placeholder text for the input field of the keyword.
    */
-  @Input() keywordPlaceholder = CONFIG.KEYWORDS_PLACEHOLDER;
+  @Input() keywordPlaceholder = defaultConfig.keywordsPlaceholder;
 
   /**
    * Chip text color
@@ -62,17 +62,17 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * Is chip removable?
    */
-  @Input() removable = CONFIG.REMOVABLE;
+  @Input() removable = defaultConfig.removable;
 
   /**
    * Minium width of this widget
    */
-  @Input() minWidth = CONFIG.MIN_WIDTH;
+  @Input() minWidth = defaultConfig.minWidth;
 
   /**
    * Enable to show color palette widget
    */
-  @Input() showColorPalette = CONFIG.SHOW_COLOR_PALETTE;
+  @Input() showColorPalette = defaultConfig.showColorPalette;
 
   /**
    * Keywords list
@@ -82,7 +82,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * Enable Init Keywords
    */
-  @Input() enableInitKeywords = CONFIG.INIT_KEYWORDS;
+  @Input() enableInitKeywords = defaultConfig.initKeywords;
 
   /**
    * Is library initialized
@@ -114,6 +114,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    */
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   constructor(
+    @Inject(MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN) private multiKeywordsHighlighterConfig: MultiKeywordsHighlighterConfig,
     private mService: MultiKeywordsHighlighterService
   ) {
     this.materialThemeColor = this.mService.themeColor;
@@ -137,11 +138,11 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   }
 
   get appName(): string {
-    return CONFIG.APP_NAME;
+    return LibConfig.APP_NAME;
   }
 
   get appVersion(): string {
-    return CONFIG.APP_VERSION ? `v${CONFIG.APP_VERSION}` : '';
+    return LibConfig.APP_VERSION;
   }
 
   /**

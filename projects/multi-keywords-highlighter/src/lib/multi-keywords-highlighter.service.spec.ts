@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import {
-  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
   MATERIAL_COLOR,
   MultiKeywordsHighlighterConfig
 } from './core';
@@ -9,7 +9,7 @@ import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.se
 
 describe('MultiKeywordsHighlighterService', () => {
   let service: MultiKeywordsHighlighterService;
-  const config: MultiKeywordsHighlighterConfig = {
+  const config: Partial<MultiKeywordsHighlighterConfig> = {
     themeColor: MATERIAL_COLOR.PRIMARY
   };
 
@@ -17,7 +17,7 @@ describe('MultiKeywordsHighlighterService', () => {
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
           useValue: config
         }
       ]
@@ -30,6 +30,6 @@ describe('MultiKeywordsHighlighterService', () => {
   });
 
   it('should get injected theme color', () => {
-    expect(service.themeColor).toBe(config.themeColor);
+    expect(service.themeColor).toBe(MATERIAL_COLOR.PRIMARY);
   });
 });

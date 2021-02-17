@@ -1,10 +1,12 @@
+import { MultiKeywordsHighlighterConfig } from './multi-keywords-highlighter-config.interface';
+
 export const NAME_SPACE = {
   KEYWORDS: 'MH_KEYWORDS',
   HIGHLIGHTED: 'MH_HIGHLIGHTED',
   HIGHLIGHT_STATUS: 'MH_HIGHLIGHT_STATUS'
 };
 
-export const CONFIG = {
+export const DEFAULT_CONFIG = {
   APP_NAME: 'Multi keywords highlighter',
   APP_VERSION: '0.0.1',
   COPYRIGHT: {
@@ -16,6 +18,21 @@ export const CONFIG = {
   MIN_WIDTH: 340,
   SHOW_COLOR_PALETTE: false,
   INIT_KEYWORDS: true
+};
+
+export class LibConfig {
+  static readonly APP_NAME = DEFAULT_CONFIG.APP_NAME;
+  static readonly APP_VERSION = DEFAULT_CONFIG.APP_VERSION;
+  static readonly COPYRIGHT_AUTHOR = DEFAULT_CONFIG.COPYRIGHT.AUTHOR;
+  static readonly COPYRIGHT_CONTACT = DEFAULT_CONFIG.COPYRIGHT.CONTACT;
+};
+
+export const defaultConfig: Partial<MultiKeywordsHighlighterConfig> = {
+  keywordsPlaceholder: DEFAULT_CONFIG.KEYWORDS_PLACEHOLDER,
+  removable: DEFAULT_CONFIG.REMOVABLE,
+  minWidth: DEFAULT_CONFIG.MIN_WIDTH,
+  showColorPalette: DEFAULT_CONFIG.SHOW_COLOR_PALETTE,
+  initKeywords: DEFAULT_CONFIG.INIT_KEYWORDS
 };
 
 export enum MATERIAL_COLOR {
