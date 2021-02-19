@@ -1,0 +1,31 @@
+app-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+// Override default angular material design colors
+// ::ng-deep lib-multi-keywords-highlighter {
+//   .mat-accent {
+//     &.mat-icon-button {
+//       color: yellow;
+//     }
+//   }
+//   .mat-badge-accent {
+//     .mat-badge-content {
+//       background-color: green;
+//     }
+//   }
+//   .mat-slide-toggle {
+//     &.mat-accent {
+//       .mat-slide-toggle-bar {
+//         background-color: purple;
+//       }
+//       .mat-slide-toggle-thumb {
+//         background-color: blue;
+//       }
+//     }
+//   }
+// }

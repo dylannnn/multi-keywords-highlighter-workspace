@@ -7,7 +7,9 @@ import { MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN } from './core/multi-keywords-h
 })
 export class MultiKeywordsHighlighterService {
   private defaultColor: MATERIAL_COLOR;
-  constructor(@Inject(MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN) private multiKeywordsHighlighterConfig: Partial<MultiKeywordsHighlighterConfig>) {
+  constructor(
+    @Inject(MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN) private multiKeywordsHighlighterConfig: Partial<MultiKeywordsHighlighterConfig>
+  ) {
     this.defaultColor = this.multiKeywordsHighlighterConfig.themeColor || MATERIAL_COLOR.PRIMARY;
   }
 
