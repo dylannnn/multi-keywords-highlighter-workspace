@@ -13,7 +13,8 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     files: [
-      { pattern: '../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css' }
+      // { pattern: '../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css' },
+      // { pattern: '../../projects/sandbox/src/styles.scss' }
     ],
     client: {
       jasmine: {
@@ -31,8 +32,9 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, '../../coverage/multi-keywords-highlighter'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' }
       ]
     },
     reporters: ['progress', 'kjhtml'],

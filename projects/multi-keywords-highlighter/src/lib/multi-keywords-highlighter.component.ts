@@ -1,6 +1,15 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { COLOR, COLOR_PALETTE, defaultConfig, DEFAULT_CONFIG, IKeyword, LibConfig, MATERIAL_COLOR, MultiKeywordsHighlighterConfig, MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN } from './core';
+import {
+  COLOR,
+  COLOR_PALETTE,
+  IKeyword,
+  MATERIAL_COLOR,
+  MultiKeywordsHighlighterConfig,
+  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
+  LibConfig,
+  defaultConfig
+} from './core';
 import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatChipInputEvent } from '@angular/material/chips';
@@ -175,16 +184,16 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
         color: this.getRandomColor()
       };
 
-      // this.mService.localKeywords$.subscribe(keywords => {
-      //   console.log('[LIB - Add Keyword] Observable keywords: ', keywords);
-      //   if (keywords) {
-      //     keywords.map(ikeyword => {
-      //       if (ikeyword.name === keyword.name) {
-      //         isDuplicatedKeyword = true;
-      //       }
-      //     });
-      //   }
-      // });
+      this.mService.localKeywords$.subscribe(keywords => {
+        console.log('[LIB - Add Keyword] Observable keywords: ', keywords);
+        if (keywords) {
+          keywords.map(ikeyword => {
+            if (ikeyword.name === keyword.name) {
+              isDuplicatedKeyword = true;
+            }
+          });
+        }
+      });
       if (!isDuplicatedKeyword) {
         if ((value || '').trim()) {
           this.keywordList.push(keyword);
@@ -225,7 +234,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    */
   onToggle(event: MatSlideToggleChange): void {
     console.log('onHighlight: ', event.checked);
-    this.toggleLibTheme(event.checked);
+    this.toggleThemeColor(event.checked);
     // this.mService.toggleHighlighter(event.checked);
     // event.checked ?
     //   this.materialThemeColor = MATERIAL_COLOR.ACCENT :
@@ -239,7 +248,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
     // }
   }
 
-  private toggleLibTheme(state: boolean): void {
+  private toggleThemeColor(state: boolean): void {
     state ?
       this.materialThemeColor = MATERIAL_COLOR.ACCENT :
       this.materialThemeColor = MATERIAL_COLOR.PRIMARY;

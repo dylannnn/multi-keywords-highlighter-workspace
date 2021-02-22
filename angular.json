@@ -26,7 +26,10 @@
           "options": {
             "main": "projects/multi-keywords-highlighter/src/test.ts",
             "tsConfig": "projects/multi-keywords-highlighter/tsconfig.spec.json",
-            "karmaConfig": "projects/multi-keywords-highlighter/karma.conf.js"
+            "karmaConfig": "projects/multi-keywords-highlighter/karma.conf.js",
+            "styles": [
+              "projects/sandbox/src/styles.scss"
+            ]
           }
         },
         "lint": {

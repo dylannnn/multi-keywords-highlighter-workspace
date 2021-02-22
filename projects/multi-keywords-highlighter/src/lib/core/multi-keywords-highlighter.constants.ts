@@ -25,7 +25,7 @@ export class LibConfig {
   static readonly APP_VERSION = DEFAULT_CONFIG.APP_VERSION;
   static readonly COPYRIGHT_AUTHOR = DEFAULT_CONFIG.COPYRIGHT.AUTHOR;
   static readonly COPYRIGHT_CONTACT = DEFAULT_CONFIG.COPYRIGHT.CONTACT;
-};
+}
 
 export const defaultConfig: Partial<MultiKeywordsHighlighterConfig> = {
   keywordsPlaceholder: DEFAULT_CONFIG.KEYWORDS_PLACEHOLDER,
