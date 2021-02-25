@@ -14,6 +14,7 @@ import {
 
 /**
  * Multi Keywords Highlighter Service
+ * @dynamic
  */
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class MultiKeywordsHighlighterService {
   highlightedStatus$ = this.highlightedStatusSubject.asObservable();
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) readonly document: Document,
     @Inject(MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN) private multiKeywordsHighlighterConfig: Partial<MultiKeywordsHighlighterConfig>
   ) {}
 

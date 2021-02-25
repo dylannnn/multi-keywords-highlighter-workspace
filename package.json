@@ -13,7 +13,7 @@
     "develop:lib-all": "run-s develop:lib develop:scss-bundle",
     "develop:lib": "ng build multi-keywords-highlighter --watch",
     "develop:scss-bundle": "scss-bundle --config projects/multi-keywords-highlighter/scss-bundle.config.json --project projects/multi-keywords-highlighter --watch",
-    "build:lib": "ng build multi-keywords-highlighter && scss-bundle --config projects/multi-keywords-highlighter/scss-bundle.config.json --project projects/multi-keywords-highlighter",
+    "build:lib": "ng build multi-keywords-highlighter --prod && scss-bundle --config projects/multi-keywords-highlighter/scss-bundle.config.json --project projects/multi-keywords-highlighter",
     "test:lib": "ng test multi-keywords-highlighter --watch --code-coverage",
     "test:lib:ci": "ng test multi-keywords-highlighter --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint:lib": "ng lint multi-keywords-highlighter",
