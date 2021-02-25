@@ -1,5 +1,7 @@
-import { MultiKeywordsHighlighterConfig } from './multi-keywords-highlighter-config.interface';
-
+/**
+ * Multi Keywords Highlighter Constants
+ * @ignore
+ */
 export class MultiKeywordsHighlighterConstants {
   static readonly APP_NAME = 'Multi keywords highlighter';
   static readonly APP_VERSION = '0.0.1';
@@ -23,6 +25,10 @@ export class MultiKeywordsHighlighterConstants {
   static APP_ROOT = 'app-root';
 }
 
+/**
+ * Name Space
+ * @ignore
+ */
 export const NAME_SPACE = {
   KEYWORDS: 'MH_KEYWORDS',
   HIGHLIGHTED: 'MH_HIGHLIGHTED',

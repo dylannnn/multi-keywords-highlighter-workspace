@@ -19,7 +19,12 @@
     "lint:lib": "ng lint multi-keywords-highlighter",
     "==== Release =====": "echo '================== RELEASE =================='",
     "release:local": "semantic-release --no-ci --debug",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "==== Documentation =====": "echo '================== DOCUMENTATION =================='",
+    "docs:html:serve:watch": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -s -o -w -e html -d ./documentation/",
+    "docs:html:serve": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -s -o -e html -d ./documentation/",
+    "docs:html": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -e html -d ./documentation/",
+    "docs:json": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -e json -d ."
   },
   "release": {
     "branches": [
@@ -62,6 +67,7 @@
     "@angular-devkit/build-angular": "~0.1102.1",
     "@angular/cli": "~11.2.1",
     "@angular/compiler-cli": "~11.2.1",
+    "@compodoc/compodoc": "^1.1.11",
     "@semantic-release/changelog": "^5.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",

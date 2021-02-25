@@ -1,5 +1,9 @@
 import { LABEL_POSITION, MATERIAL_COLOR } from './multi-keywords-highlighter.constants';
 
+/**
+ * Multi Keywords Highlighter Configuration
+ * @ignore
+ */
 export interface MultiKeywordsHighlighterConfig {
   themeColor: MATERIAL_COLOR;
   keywordsPlaceholder: string;

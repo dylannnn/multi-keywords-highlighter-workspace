@@ -2,6 +2,9 @@ import { COLOR, COLOR_PALETTE } from './color-palette.const';
 import { MultiKeywordsHighlighterConfig } from './multi-keywords-highlighter-config.interface';
 import { LABEL_POSITION, MATERIAL_COLOR, MultiKeywordsHighlighterConstants } from './multi-keywords-highlighter.constants';
 
+/**
+ * Default configuration
+ */
 export const defaultConfig: MultiKeywordsHighlighterConfig = {
   themeColor: MATERIAL_COLOR.PRIMARY,
   colorPalette: COLOR_PALETTE.DEFAULT,

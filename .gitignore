@@ -47,3 +47,7 @@ Thumbs.db
 # Sonar Scanner
 .scannerwork
 coverage
+
+# compodoc
+documentation
+documentation.json

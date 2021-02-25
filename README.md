@@ -71,12 +71,13 @@ import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'multi-keywords-h
 
 ## Roadmap
 
-- [ ] Search
-- [ ] Highlight
+- [x] Search
+- [x] Highlight
 - [ ] Save to localstorage
 - [ ] Themes
 - [ ] CI/CD Release
-
+- [x] Compodoc Documentation
+- [ ] Storybook
 
 ## Issues?
 

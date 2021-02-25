@@ -41,7 +41,7 @@
           [color]="themeColor"
           (change)="onToggle($event)">
           <ng-container *ngIf="config.enableToggleLabel">
-            <span class="mh__text">{{ highlightedStauts | async }}</span>
+            <span class="mh__text">{{ highlightedStautsText | async }}</span>
           </ng-container>
         </mat-slide-toggle>
       </div>
@@ -80,7 +80,6 @@
           <ng-template #normalCopyright>
             <span class="mh-copyright">&copy; {{ copyright }}&nbsp;</span>
           </ng-template>
-          <!-- <span class="mh-copyright">&copy; {{ copyright }} </span> -->
           <span>{{ currentYear | date:"yyyy" }}</span>
         </span>
       </div>

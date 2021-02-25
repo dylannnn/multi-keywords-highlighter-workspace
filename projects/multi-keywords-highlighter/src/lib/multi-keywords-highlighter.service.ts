@@ -12,6 +12,9 @@ import {
   COLOR
 } from './core';
 
+/**
+ * Multi Keywords Highlighter Service
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -44,10 +47,16 @@ export class MultiKeywordsHighlighterService {
     return this.highlightedStatusSubject.value;
   }
 
-  toggleHighlight(status: boolean): void {
+  /**
+   * Toggle Highlight Status
+   */
+  toggleHighlightStatus(status: boolean): void {
     return this.highlightedStatusSubject.next(status);
   }
 
+  /**
+   * Add Keyword
+   */
   addKeyword(keyword: IKeyword): void {
     const tempKeywordList = this.localKeywordsSubject.value;
     if (this.isValidKeyword(keyword)) {
@@ -59,18 +68,30 @@ export class MultiKeywordsHighlighterService {
     this.localKeywordsSubject.next(tempKeywordList);
   }
 
-  isValidKeyword(keyword: IKeyword): boolean {
+  /**
+   * Check keyword is not empty and not duplicated
+   */
+  private isValidKeyword(keyword: IKeyword): boolean {
     return !this.isEmpty(keyword) && !this.isDuplicated(keyword);
   }
 
+  /**
+   * Check keyword is not empty
+   */
   private isEmpty(keyword: IKeyword): boolean {
     return (keyword.name || '').trim().length <= 0;
   }
 
+  /**
+   * Check keyword is not duplicated
+   */
   private isDuplicated(keyword: IKeyword): boolean {
     return this.localKeywordsSubject.value.some(item => item.name === keyword.name);
   }
 
+  /**
+   * Remove a Keyword
+   */
   removeKeyword(keyword: IKeyword): void {
     const tempKeywordList = this.localKeywordsSubject.value;
     const index = tempKeywordList.indexOf(keyword);
@@ -81,20 +102,32 @@ export class MultiKeywordsHighlighterService {
     this.localKeywordsSubject.next(tempKeywordList);
   }
 
+  /**
+   * Toggle Highlighter and highlight keywords or de-highlight keywords
+   */
   toggleHighlighter(): void {
     this.isHighlight ? this.hightlightAllKeywords() : this.deHightlightAllKeywords();
   }
 
+  /**
+   * Highlight all keywords
+   */
   hightlightAllKeywords(): void {
     const allKeywords = this.localKeywordsSubject.value;
     allKeywords.forEach(keyword => this.hightlightKeyword(keyword));
   }
 
+  /**
+   * De-highlight all keywords
+   */
   deHightlightAllKeywords(): void {
     const allKeywords = this.localKeywordsSubject.value;
     allKeywords.forEach(keyword => this.deHightlightKeyword(keyword));
   }
 
+  /**
+   * Highlight a single keyword
+   */
   hightlightKeyword(keyword: IKeyword): void {
     if (!keyword || !keyword.name){
       return;
@@ -151,7 +184,10 @@ export class MultiKeywordsHighlighterService {
     }
   }
 
-  createHighlightElements(keywordParts: string[], keyword: IKeyword): (Text | HTMLSpanElement)[] {
+  /**
+   * Create Highlight Elements
+   */
+  private createHighlightElements(keywordParts: string[], keyword: IKeyword): (Text | HTMLSpanElement)[] {
     const newElement: (Text | HTMLSpanElement)[] = [];
     for (const iteratorPart of keywordParts) {
       if (!iteratorPart) {
@@ -173,6 +209,9 @@ export class MultiKeywordsHighlighterService {
     return newElement;
   }
 
+  /**
+   * De-highlight a single keyword
+   */
   deHightlightKeyword(keyword: IKeyword): void {
     const highlightedElements = document.querySelectorAll(`.${defaultConfig.highlightClass}`);
     highlightedElements.forEach(elm => {
@@ -188,7 +227,10 @@ export class MultiKeywordsHighlighterService {
     });
   }
 
-  isMatchedKeyword(highlightedKeyword: string, keyword: IKeyword): boolean {
+  /**
+   * Check the input keyword is match with node text content
+   */
+  private isMatchedKeyword(highlightedKeyword: string, keyword: IKeyword): boolean {
     return (!this.config.caseSensitive && (highlightedKeyword.toLowerCase() === keyword.name.toLowerCase())) ||
     this.config.caseSensitive && (highlightedKeyword === keyword.name);
   }

@@ -20,7 +20,7 @@ import {
   LibConfig,
   MultiKeywordsHighlighterConfig
 } from './core';
-import { COLOR_LENS, HIGHLIGHT_ICON } from './material';
+import { ICON_COLOR_LENS, ICON_HIGHLIGHT } from './material';
 import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.service';
 
 /**
@@ -40,15 +40,20 @@ import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.se
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiKeywordsHighlighterComponent implements OnInit {
+  /**
+   * Material theme color for Button, badge and toggle button
+   */
   themeColor: MATERIAL_COLOR = MATERIAL_COLOR.PRIMARY;
 
   /**
    * Output event for keywords list
+   * @returns IKeyword[]
    */
   @Output() keywordListOutput: EventEmitter<IKeyword[]> = new EventEmitter<IKeyword[]>();
 
   /**
    * Output event for highlighted status
+   * @returns boolean
    */
   @Output() highlighted: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
@@ -62,6 +67,9 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    */
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
+  /**
+   * Keyword quantity shows on badge
+   */
   keywordQuantity = 0;
 
   constructor(
@@ -69,44 +77,65 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private mService: MultiKeywordsHighlighterService
   ) {
-    iconRegistry.addSvgIconLiteral('highlight', sanitizer.bypassSecurityTrustHtml(HIGHLIGHT_ICON));
-    iconRegistry.addSvgIconLiteral('color_lens', sanitizer.bypassSecurityTrustHtml(COLOR_LENS));
+    iconRegistry.addSvgIconLiteral('highlight', sanitizer.bypassSecurityTrustHtml(ICON_HIGHLIGHT));
+    iconRegistry.addSvgIconLiteral('color_lens', sanitizer.bypassSecurityTrustHtml(ICON_COLOR_LENS));
   }
 
   ngOnInit(): void {
   }
 
   /**
-   * Copyright Amfrontender
+   * Copyright
    */
   get copyright(): string {
     return LibConfig.COPYRIGHT_AUTHOR;
   }
 
+  /**
+   * Copyright link
+   */
   get copyrightLink(): string {
     return LibConfig.COPYRIGHT_CONTACT;
   }
 
+  /**
+   * Library name
+   */
   get appName(): string {
     return LibConfig.APP_NAME;
   }
 
+  /**
+   * Library version
+   */
   get appVersion(): string {
     return LibConfig.APP_VERSION;
   }
 
+  /**
+   * Library configuration
+   */
   get config(): MultiKeywordsHighlighterConfig {
     return this.mService.config;
   }
 
+  /**
+   * Number of keywords
+   */
   get countKeywords(): number {
     return this.keywordQuantity;
   }
 
-  get highlightedStauts(): Observable<string> {
+  /**
+   * Highlighted stauts text
+   */
+  get highlightedStautsText(): Observable<string> {
     return this.mService.highlightedStatusText$;
   }
 
+  /**
+   * Keyword list
+   */
   get keywordList$(): Observable<IKeyword[]> {
     return this.mService.localKeywords$.pipe(
       tap(keywordList => {
@@ -127,11 +156,10 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
 
   /**
    * On check the highlighter checkbox
-   * @param event Material slide toggle event
+   * @param event MatSlideToggleChange
    */
   onToggle(event: MatSlideToggleChange): void {
-    console.log('onToggleHighlight: ', event.checked);
-    this.mService.toggleHighlight(event.checked);
+    this.mService.toggleHighlightStatus(event.checked);
     this.mService.toggleHighlighter();
     this.highlighted.emit(event.checked);
     event.checked ? this.themeColor = MATERIAL_COLOR.ACCENT : this.themeColor = MATERIAL_COLOR.PRIMARY;
