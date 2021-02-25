@@ -1,18 +1,27 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
-  COLOR,
-  COLOR_PALETTE,
-  IKeyword,
-  MATERIAL_COLOR,
-  MultiKeywordsHighlighterConfig,
-  MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
-  LibConfig,
-  defaultConfig
-} from './core';
-import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.service';
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+import {
+  IKeyword,
+  MATERIAL_COLOR,
+  LibConfig,
+  MultiKeywordsHighlighterConfig
+} from './core';
+import { COLOR_LENS, HIGHLIGHT_ICON } from './material';
+import { MultiKeywordsHighlighterService } from './multi-keywords-highlighter.service';
 
 /**
  * Multi keywords highlighter
@@ -27,76 +36,11 @@ import { MatChipInputEvent } from '@angular/material/chips';
   selector: 'lib-multi-keywords-highlighter',
   templateUrl: './multi-keywords-highlighter.component.html',
   styleUrls: ['./multi-keywords-highlighter.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiKeywordsHighlighterComponent implements OnInit {
-  /**
-   * Copyright
-   */
-  @Input() copyright = LibConfig.COPYRIGHT_AUTHOR;
-
-  /**
-   * Material theme color
-   *
-   * - 'primary'
-   * - 'accent'
-   * - 'warn'
-   */
-  @Input() materialThemeColor: MATERIAL_COLOR; // = MATERIAL_COLOR.PRIMARY
-
-  /**
-   * Color palette
-   *
-   * *Support color keyword, HEX, RGB, RGBA, HSL, HSLA*
-   *
-   */
-  @Input() colorPalette: string[] = COLOR_PALETTE.DEFAULT;
-
-  /**
-   * Keyword Placeholder
-   * @description The placeholder text for the input field of the keyword.
-   */
-  @Input() keywordPlaceholder = defaultConfig.keywordsPlaceholder;
-
-  /**
-   * Chip text color
-   */
-  @Input() chipTextColor = COLOR.WHITE;
-
-  /**
-   * Chip icon color
-   */
-  @Input() chipIconColor = COLOR.WHITE;
-
-  /**
-   * Is chip removable?
-   */
-  @Input() removable = defaultConfig.removable;
-
-  /**
-   * Minium width of this widget
-   */
-  @Input() minWidth = defaultConfig.minWidth;
-
-  /**
-   * Enable to show color palette widget
-   */
-  @Input() showColorPalette = defaultConfig.showColorPalette;
-
-  /**
-   * Keywords list
-   */
-  @Input() keywordList: IKeyword[] = [];
-
-  /**
-   * Enable Init Keywords
-   */
-  @Input() enableInitKeywords = defaultConfig.initKeywords;
-
-  /**
-   * Is library initialized
-   */
-  private initialized = false;
+  themeColor: MATERIAL_COLOR = MATERIAL_COLOR.PRIMARY;
 
   /**
    * Output event for keywords list
@@ -104,14 +48,9 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   @Output() keywordListOutput: EventEmitter<IKeyword[]> = new EventEmitter<IKeyword[]>();
 
   /**
-   * Keyword quantity
+   * Output event for highlighted status
    */
-  keywordQuantity = 0;
-
-  /**
-   * Is highlighted, check the highlighted checkbox
-   */
-  isHighlighted = false;
+  @Output() highlighted: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   /**
    * Copyright year
@@ -122,28 +61,30 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * Separator keys codes
    */
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  keywordQuantity = 0;
+
   constructor(
-    @Inject(MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN) private multiKeywordsHighlighterConfig: MultiKeywordsHighlighterConfig,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
     private mService: MultiKeywordsHighlighterService
   ) {
-    this.materialThemeColor = this.mService.themeColor;
+    iconRegistry.addSvgIconLiteral('highlight', sanitizer.bypassSecurityTrustHtml(HIGHLIGHT_ICON));
+    iconRegistry.addSvgIconLiteral('color_lens', sanitizer.bypassSecurityTrustHtml(COLOR_LENS));
   }
 
   ngOnInit(): void {
   }
 
   /**
-   * Getter - Get theme color
+   * Copyright Amfrontender
    */
-  get themeColor(): string {
-    return this.materialThemeColor;
+  get copyright(): string {
+    return LibConfig.COPYRIGHT_AUTHOR;
   }
 
-  /**
-   * Getter - Get keyword Count
-   */
-  get keywordCount(): number {
-    return this.keywordQuantity;
+  get copyrightLink(): string {
+    return LibConfig.COPYRIGHT_CONTACT;
   }
 
   get appName(): string {
@@ -154,15 +95,25 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
     return LibConfig.APP_VERSION;
   }
 
-  /**
-   * Display the keywords highlighter
-   */
-  showHighlighter(): void {}
+  get config(): MultiKeywordsHighlighterConfig {
+    return this.mService.config;
+  }
 
-  /**
-   * On keywords highlighter closed event
-   */
-  onClosed(): void {}
+  get countKeywords(): number {
+    return this.keywordQuantity;
+  }
+
+  get highlightedStauts(): Observable<string> {
+    return this.mService.highlightedStatusText$;
+  }
+
+  get keywordList$(): Observable<IKeyword[]> {
+    return this.mService.localKeywords$.pipe(
+      tap(keywordList => {
+        this.keywordQuantity = keywordList.length;
+      })
+    );
+  }
 
   /**
    * On keywords highlighter opened event
@@ -170,42 +121,44 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   onOpened(): void {}
 
   /**
+   * On keywords highlighter closed event
+   */
+  onClosed(): void {}
+
+  /**
+   * On check the highlighter checkbox
+   * @param event Material slide toggle event
+   */
+  onToggle(event: MatSlideToggleChange): void {
+    console.log('onToggleHighlight: ', event.checked);
+    this.mService.toggleHighlight(event.checked);
+    this.mService.toggleHighlighter();
+    this.highlighted.emit(event.checked);
+    event.checked ? this.themeColor = MATERIAL_COLOR.ACCENT : this.themeColor = MATERIAL_COLOR.PRIMARY;
+  }
+
+  /**
    * Add a keyword
    * @param event MatChipInputEvent
    */
   addKeyword(event: MatChipInputEvent): void {
-    console.log('[LIB - Add Keyword] - ', event);
     const input = event.input;
     const value = event.value;
-    let isDuplicatedKeyword = false;
     if (event.value) {
-      const keyword: IKeyword = {
+      const tempKeyword: IKeyword = {
         name: value.trim(),
         color: this.getRandomColor()
       };
 
-      this.mService.localKeywords$.subscribe(keywords => {
-        console.log('[LIB - Add Keyword] Observable keywords: ', keywords);
-        if (keywords) {
-          keywords.map(ikeyword => {
-            if (ikeyword.name === keyword.name) {
-              isDuplicatedKeyword = true;
-            }
-          });
-        }
-      });
-      if (!isDuplicatedKeyword) {
-        if ((value || '').trim()) {
-          this.keywordList.push(keyword);
-          // this.mService.addKeyword(keyword);
-          this.keywordListOutput.emit(this.keywordList);
-        }
-      }
+      this.mService.addKeyword(tempKeyword);
+      this.keywordListOutput.emit(this.mService.localKeywordsSubject.value);
+
       // Reset the input value
       if (input) {
         input.value = '';
       }
     }
+    return;
   }
 
   /**
@@ -213,48 +166,14 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * @param keyword Keyword to remove
    */
   removeKeyword(keyword: IKeyword): void {
-    const index = this.keywordList.indexOf(keyword);
-    if (index >= 0) {
-      this.keywordList.splice(index, 1);
-    }
-    // this.mService.deleteKeyword(keyword);
-    this.keywordListOutput.emit(this.keywordList);
+    this.mService.removeKeyword(keyword);
+    this.keywordListOutput.emit(this.mService.localKeywordsSubject.value);
   }
 
   /**
    * Get a random color from the color palette
    */
   private getRandomColor(): string {
-    return this.colorPalette[Math.floor((Math.random() * this.colorPalette.length))];
-  }
-
-  /**
-   * On check the highlighter checkbox
-   * @param event Material slide toggle event
-   */
-  onToggle(event: MatSlideToggleChange): void {
-    console.log('onHighlight: ', event.checked);
-    this.toggleThemeColor(event.checked);
-    // this.mService.toggleHighlighter(event.checked);
-    // event.checked ?
-    //   this.materialThemeColor = MATERIAL_COLOR.ACCENT :
-    //   this.materialThemeColor = MATERIAL_COLOR.PRIMARY;
-    // if (event.checked) {
-    //   this.materialThemeColor = MATERIAL_COLOR.ACCENT;
-    //   // TODO: To enable highlighter
-    // } else {
-    //   this.materialThemeColor = MATERIAL_COLOR.PRIMARY;
-    //   // TODO: To disable highlighter
-    // }
-  }
-
-  private toggleThemeColor(state: boolean): void {
-    state ?
-      this.materialThemeColor = MATERIAL_COLOR.ACCENT :
-      this.materialThemeColor = MATERIAL_COLOR.PRIMARY;
-  }
-
-  hightlightKeywords(): void {
-    console.log('[LIB - hightlightKeywords]');
+    return this.config.colorPalette[Math.floor((Math.random() * this.config.colorPalette.length))];
   }
 }

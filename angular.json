@@ -68,7 +68,12 @@
             "aot": true,
             "assets": [
               "projects/sandbox/src/favicon.ico",
-              "projects/sandbox/src/assets"
+              "projects/sandbox/src/assets",
+              "projects/sandbox/src/manifest.webmanifest",
+              "projects/sandbox/src/apple-touch-icon.png",
+              "projects/sandbox/src/favicon-16x16.png",
+              "projects/sandbox/src/favicon-32x32.png",
+              "projects/sandbox/src/safari-pinned-tab.svg"
             ],
             "styles": [
               "projects/sandbox/src/styles.scss"
@@ -131,7 +136,12 @@
             "karmaConfig": "projects/sandbox/karma.conf.js",
             "assets": [
               "projects/sandbox/src/favicon.ico",
-              "projects/sandbox/src/assets"
+              "projects/sandbox/src/assets",
+              "projects/sandbox/src/manifest.webmanifest",
+              "projects/sandbox/src/apple-touch-icon.png",
+              "projects/sandbox/src/favicon-16x16.png",
+              "projects/sandbox/src/favicon-32x32.png",
+              "projects/sandbox/src/safari-pinned-tab.svg"
             ],
             "styles": [
               "projects/sandbox/src/styles.scss"

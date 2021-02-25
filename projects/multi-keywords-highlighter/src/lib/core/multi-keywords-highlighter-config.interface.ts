@@ -1,10 +1,21 @@
-import { MATERIAL_COLOR } from './multi-keywords-highlighter.constants';
+import { LABEL_POSITION, MATERIAL_COLOR } from './multi-keywords-highlighter.constants';
 
 export interface MultiKeywordsHighlighterConfig {
   themeColor: MATERIAL_COLOR;
   keywordsPlaceholder: string;
   removable: boolean;
   minWidth: number;
-  showColorPalette: boolean;
+  toggleLabelPosition: LABEL_POSITION;
+  enableToggleLabel: boolean;
+  enableHighlighterTooltip: string;
+  enableColorPalette: boolean;
   initKeywords: boolean;
+  colorPalette: string[];
+  chipTextColor: string;
+  chipIconColor: string;
+  linkToCopyright: boolean;
+  caseSensitive: boolean;
+  minSearchLength: number;
+  appRoot: string;
+  highlightClass: string;
 }

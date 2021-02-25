@@ -1,6 +1,6 @@
 {
   "name": "multi-keywords-highlighter-workspace",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": "dylannnn/multi-keywords-highlighter-workspace",
   "scripts": {
     "==== Sandbox =====": "echo '================== SANDBOX =================='",

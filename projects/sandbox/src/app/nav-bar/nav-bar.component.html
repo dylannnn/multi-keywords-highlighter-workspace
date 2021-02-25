@@ -2,7 +2,7 @@
   <a mat-button color="primary">DEMO</a>
   <div fxLayoutGap="10px">
     <button mat-button (click)="toggleLib()" [routerLink]="[{ outlets: { 'multi-keywords-highlighter': ['lib-experimental'] } }]" class="mdl-button mdl-button--raised mdl-button--colored">Highlighter</button>
-    <lib-multi-keywords-highlighter class="custom-lib" (keywordListOutput)="onKeywordListOutput($event)" [minWidth]="320"></lib-multi-keywords-highlighter>
+    <lib-multi-keywords-highlighter class="custom-lib" (keywordListOutput)="onKeywordListOutput($event)"></lib-multi-keywords-highlighter>
     <router-outlet name="multi-keywords-highlighter"></router-outlet>
     <button mat-icon-button color="primary">
       <mat-icon>more_vert</mat-icon>
