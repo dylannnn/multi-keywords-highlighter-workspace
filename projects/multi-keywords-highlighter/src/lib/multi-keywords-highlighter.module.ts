@@ -1,26 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MultiKeywordsHighlighterConfig } from './core';
-import { MULTI_KEYWORDS_HIGHLIGHTER_CONFIG } from './core/multi-keywords-highlighter.config.token';
-import { MaterialModule } from './material/material.module';
+import { MultiKeywordsHighlighterConfig, MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN } from './core';
 import { ColorPaletteModule } from './color-palette/color-palette.module';
+import { MaterialModule } from './material/material.module';
 import { MultiKeywordsHighlighterComponent } from './multi-keywords-highlighter.component';
 
 @NgModule({
-  declarations: [MultiKeywordsHighlighterComponent],
+  declarations: [ MultiKeywordsHighlighterComponent ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
     ColorPaletteModule
   ],
-  exports: [MultiKeywordsHighlighterComponent]
+  exports: [ MultiKeywordsHighlighterComponent ]
 })
 export class MultiKeywordsHighlighterModule {
   constructor(@Optional() @SkipSelf() parentModule?: MultiKeywordsHighlighterModule) {
@@ -29,12 +26,12 @@ export class MultiKeywordsHighlighterModule {
     }
   }
 
-  static forRoot(config: MultiKeywordsHighlighterConfig): ModuleWithProviders<MultiKeywordsHighlighterModule> {
+  static forRoot(config: Partial<MultiKeywordsHighlighterConfig>): ModuleWithProviders<MultiKeywordsHighlighterModule> {
     return {
       ngModule: MultiKeywordsHighlighterModule,
       providers: [
         {
-          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG,
+          provide: MULTI_KEYWORDS_HIGHLIGHTER_CONFIG_TOKEN,
           useValue: config
         }
       ]

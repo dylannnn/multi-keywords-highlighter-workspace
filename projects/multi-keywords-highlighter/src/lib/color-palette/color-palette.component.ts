@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Color Palette Component
+ */
 @Component({
   selector: 'lib-color-palette',
   templateUrl: './color-palette.component.html',

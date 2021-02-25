@@ -1,7 +1,16 @@
+/**
+ * Default declared color
+ */
 export const COLOR = {
   WHITE: '#ffffff'
 };
 
+/**
+ * Color palette
+ *
+ * DEFAULT Default color palette
+ * FLAT Flat design color palette
+ */
 export const COLOR_PALETTE = {
   DEFAULT: [
     '#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5',

@@ -16,6 +16,12 @@
     &-tint {
       color: lighten($color: #000000, $amount: 60)
     }
+    &-highlighted {
+      padding: 0 3px;
+      box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 3px;
+      border-radius: 3px;
+      text-decoration: none;
+    }
   }
   &__version {
     font-size: 12px;
@@ -24,5 +30,17 @@
     &__list {
       width: 100%;
     }
+  }
+}
+
+a {
+  &.mh {
+    &-copyright {
+      color: lighten($color: #000000, $amount: 60);
+      text-decoration: none;
+    }
+  }
+  &:hover {
+    text-decoration: underline;
   }
 }

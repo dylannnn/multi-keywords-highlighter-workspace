@@ -1,12 +1,27 @@
 {
   "name": "multi-keywords-highlighter",
   "version": "0.0.1",
+  "description": "Angular lib-multi-keywords-highlighter is an Angular library that build together with Angular material.",
+  "author": "Yunfei Li<dylannnnlee@gmail.com>",
+  "license": "MIT",
+  "repository": "dylannnn/multi-keywords-highlighter-workspace",
+  "engines": {
+    "node": ">= 12",
+    "npm": ">= 6"
+  },
+  "keywords": [
+    "angular",
+    "keywords",
+    "highlighter",
+    "multi keywords"
+  ],
   "peerDependencies": {
-    "@angular/common": "^11.2.0",
-    "@angular/core": "^11.2.0",
-    "@angular/cdk": "^11.2.0",
+    "@angular/common": "~11.2.1",
+    "@angular/core": "~11.2.1",
+    "rxjs": "~6.6.0",
+    "@angular/cdk": "^11.2.1",
     "@angular/flex-layout": "^11.0.0-beta.33",
-    "@angular/material": "^11.2.0"
+    "@angular/material": "^11.2.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"

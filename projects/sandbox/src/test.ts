@@ -23,3 +23,15 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+
+// Mock material icon fonts
+const materialIcons = document.createElement('link');
+materialIcons.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+materialIcons.rel = 'stylesheet';
+document.head.appendChild(materialIcons);
+
+
+const materialStyles = document.createElement('link');
+materialIcons.href = 'node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+materialIcons.rel = 'stylesheet';
+document.head.appendChild(materialStyles);
