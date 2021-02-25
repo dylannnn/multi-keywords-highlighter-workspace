@@ -17,7 +17,7 @@ An authentication feature will be developed in a later stage to store encrypted 
 
 ### Install Required Peer Dependencies
 
-`npm install @angular/material @angular/cdk @angular/flex-layout`
+`npm install @angular/material @angular/cdk @angular/flex-layout @amfrontender/multi-keywords-highlighter-workspace`
 
 ### Usage
 
