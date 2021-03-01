@@ -22,5 +22,6 @@ export const defaultConfig: MultiKeywordsHighlighterConfig = {
   caseSensitive: false,
   minSearchLength: MultiKeywordsHighlighterConstants.MIN_SEARCH_LENGTH,
   appRoot: MultiKeywordsHighlighterConstants.APP_ROOT,
-  highlightClass: MultiKeywordsHighlighterConstants.HIGHLIGHT_CLASS
+  highlightClass: MultiKeywordsHighlighterConstants.HIGHLIGHT_CLASS,
+  customNodeFilter: null
 };

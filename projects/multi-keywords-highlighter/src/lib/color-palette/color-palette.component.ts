@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * Color Palette Component
@@ -8,11 +8,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './color-palette.component.html',
   styleUrls: ['./color-palette.component.scss']
 })
-export class ColorPaletteComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ColorPaletteComponent {}

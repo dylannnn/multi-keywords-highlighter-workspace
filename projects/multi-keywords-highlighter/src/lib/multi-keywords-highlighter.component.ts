@@ -49,6 +49,12 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * Output event for keywords list
    * @returns IKeyword[]
    */
+  @Output() initialized: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+  /**
+   * Output event for keywords list
+   * @returns IKeyword[]
+   */
   @Output() keywordListOutput: EventEmitter<IKeyword[]> = new EventEmitter<IKeyword[]>();
 
   /**
@@ -56,6 +62,18 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
    * @returns boolean
    */
   @Output() highlighted: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+  /**
+   * Output event for on Open Menu
+   * @returns boolean
+   */
+  @Output() openMenu: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+  /**
+   * Output event for on Close Menu
+   * @returns boolean
+   */
+  @Output() closeMenu: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   /**
    * Copyright year
@@ -82,6 +100,7 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initialized.emit(true);
   }
 
   /**
@@ -147,12 +166,16 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
   /**
    * On keywords highlighter opened event
    */
-  onOpened(): void {}
+  onOpened(): void {
+    this.openMenu.emit(true);
+  }
 
   /**
    * On keywords highlighter closed event
    */
-  onClosed(): void {}
+  onClosed(): void {
+    this.openMenu.emit(true);
+  }
 
   /**
    * On check the highlighter checkbox
@@ -186,7 +209,6 @@ export class MultiKeywordsHighlighterComponent implements OnInit {
         input.value = '';
       }
     }
-    return;
   }
 
   /**

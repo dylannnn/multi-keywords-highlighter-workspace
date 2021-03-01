@@ -1,6 +1,8 @@
 # Multi Keywords Highlighter Workspace
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+![main](https://img.shields.io/travis/dylannnn/multi-keywords-highlighter-workspace/main?label=main&logo=github) ![master](https://img.shields.io/travis/dylannnn/multi-keywords-highlighter-workspace/master?label=master&logo=github)
+[![version](https://img.shields.io/badge/version-0.0.2-green.svg?style=flat)](https://www.npmjs.com/package/@amfrontender/multi-keywords-highlighter-workspace)  [![Angular](https://img.shields.io/badge/11.2.1-dd0031.svg?style=flat&logo=angular)](https://angular.io/)
+
 
 Multi Keywords Highlighter is an Angular library that build together with Angular material.
 

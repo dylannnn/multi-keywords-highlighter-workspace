@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, Injector, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -13,7 +13,7 @@ import { MOCK_PERIODIC_ELEMENT_DATA } from './periodic-element.mock';
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent implements OnInit {
+export class DemoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<PeriodicElement>;
   columnsToDisplay = ['position', 'name', 'weight', 'symbol'];
   @ViewChild(MatSort) sort!: MatSort;
@@ -43,15 +43,18 @@ export class DemoComponent implements OnInit {
       console.log('[DEMO] DemoComponent: Activated Route Data: ', data);
     });
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = MOCK_PERIODIC_ELEMENT_DATA;
   }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.data = MOCK_PERIODIC_ELEMENT_DATA;
     this.activatedRoute.data.subscribe(data => {
       console.log('[DEMO] DemoComponent Init: Activated Route Data: ', data);
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   sortData(sort: Sort): void {

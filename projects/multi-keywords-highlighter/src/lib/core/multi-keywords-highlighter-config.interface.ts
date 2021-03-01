@@ -22,4 +22,5 @@ export interface MultiKeywordsHighlighterConfig {
   minSearchLength: number;
   appRoot: string;
   highlightClass: string;
+  customNodeFilter: NodeFilter | null;
 }
