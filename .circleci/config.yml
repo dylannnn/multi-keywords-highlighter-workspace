@@ -2,6 +2,8 @@ version: 2.1
 description: Circle CI
 orbs:
   node: circleci/node@4.2.0
+  environment:
+    CHROME_BIN: /usr/bin/google-chrome
 jobs:
   test_library:
     executor:
@@ -11,7 +13,7 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: CHROME_BIN=/usr/bin/google-chrome && npm run test:lib:ci
+          command: npm run test:lib:ci
 workflows:
   test_my_app:
     jobs:
