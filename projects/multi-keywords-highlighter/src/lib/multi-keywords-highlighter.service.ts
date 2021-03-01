@@ -24,7 +24,7 @@ export class MultiKeywordsHighlighterService {
   localKeywordsSubject = new BehaviorSubject<IKeyword[]>([]);
   localKeywords$ = this.localKeywordsSubject.asObservable();
 
-  private highlightedStatusSubject = new BehaviorSubject<boolean>(false);
+  highlightedStatusSubject = new BehaviorSubject<boolean>(false);
   highlightedStatus$ = this.highlightedStatusSubject.asObservable();
 
   constructor(
@@ -48,6 +48,10 @@ export class MultiKeywordsHighlighterService {
     return this.highlightedStatusSubject.value;
   }
 
+  get rootNode(): Node {
+    return this.document.body.getElementsByTagName(defaultConfig.appRoot)[0];
+  }
+
   /**
    * Toggle Highlight Status
    */
@@ -63,6 +67,7 @@ export class MultiKeywordsHighlighterService {
     if (this.isValidKeyword(keyword)) {
       tempKeywordList.push(keyword);
     }
+
     if (this.isHighlight) {
       this.hightlightKeyword(keyword);
     }
@@ -72,21 +77,21 @@ export class MultiKeywordsHighlighterService {
   /**
    * Check keyword is not empty and not duplicated
    */
-  private isValidKeyword(keyword: IKeyword): boolean {
+  isValidKeyword(keyword: IKeyword): boolean {
     return !this.isEmpty(keyword) && !this.isDuplicated(keyword);
   }
 
   /**
    * Check keyword is not empty
    */
-  private isEmpty(keyword: IKeyword): boolean {
+  isEmpty(keyword: IKeyword): boolean {
     return (keyword.name || '').trim().length <= 0;
   }
 
   /**
    * Check keyword is not duplicated
    */
-  private isDuplicated(keyword: IKeyword): boolean {
+  isDuplicated(keyword: IKeyword): boolean {
     return this.localKeywordsSubject.value.some(item => item.name === keyword.name);
   }
 
@@ -130,23 +135,18 @@ export class MultiKeywordsHighlighterService {
    * Highlight a single keyword
    */
   hightlightKeyword(keyword: IKeyword): void {
-    if (!keyword || !keyword.name){
+    if (!keyword || !keyword.name) {
       return;
     }
 
-    const treeWalker = this.document.createTreeWalker(
-      this.document.body.getElementsByTagName(defaultConfig.appRoot)[0],
-      NodeFilter.SHOW_TEXT,
-      // TODO: Allow custom filter?
-      null
-    );
+    const treeWalker = this.createTreeWorker(this.rootNode);
 
     let nextNode: Node | (Node & ParentNode) | null = null;
     const matchedNodes: (Node | (Node & ParentNode))[] | null = [];
     // tslint:disable-next-line: no-conditional-assignment
-    while (nextNode = treeWalker.nextNode()){
+    while (nextNode = treeWalker.nextNode()) {
       const nodeValue = nextNode.nodeValue;
-      if (nextNode.nodeType === Node.TEXT_NODE && nodeValue?.toLowerCase().indexOf(keyword.name.toLowerCase()) !== -1){
+      if (nextNode.nodeType === Node.TEXT_NODE && nodeValue?.toLowerCase().indexOf(keyword.name.toLowerCase()) !== -1) {
         matchedNodes.push(nextNode);
       }
     }
@@ -159,10 +159,10 @@ export class MultiKeywordsHighlighterService {
     for (const iteratorNode of matchedNodes) {
       nextNode = iteratorNode;
       let parentNode = nextNode.parentNode;
-      if (!parentNode){
+      if (!parentNode) {
         parentNode = nextNode as (Node & ParentNode);
         parentNode.nodeValue = '';
-      } else if ((parentNode as Element).className === defaultConfig.highlightClass){
+      } else if ((parentNode as Element).className === defaultConfig.highlightClass) {
         // prevent duplicate highlighting
         continue;
       }
@@ -170,7 +170,7 @@ export class MultiKeywordsHighlighterService {
       let keywordParts: string[];
       if (this.config.caseSensitive) {
         keywordParts = (nextNode as Text).data.split(new RegExp(`(${keyword.name})`));
-      } else{
+      } else {
         keywordParts = (nextNode as Text).data.split(new RegExp(`(${keyword.name})`, 'i'));
       }
 
@@ -178,17 +178,25 @@ export class MultiKeywordsHighlighterService {
 
       let insertNode: Text | HTMLSpanElement | undefined;
       // tslint:disable-next-line: no-conditional-assignment
-      while (insertNode = newNodes.shift()){
+      while (insertNode = newNodes.shift()) {
         parentNode.insertBefore(insertNode, nextNode);
       }
       parentNode.removeChild(nextNode);
     }
   }
 
+  createTreeWorker(rootNode: Node): TreeWalker {
+    return this.document.createTreeWalker(
+      rootNode,
+      NodeFilter.SHOW_TEXT,
+      this.config.customNodeFilter
+    );
+  }
+
   /**
    * Create Highlight Elements
    */
-  private createHighlightElements(keywordParts: string[], keyword: IKeyword): (Text | HTMLSpanElement)[] {
+  createHighlightElements(keywordParts: string[], keyword: IKeyword): (Text | HTMLSpanElement)[] {
     const newElement: (Text | HTMLSpanElement)[] = [];
     for (const iteratorPart of keywordParts) {
       if (!iteratorPart) {
@@ -231,7 +239,7 @@ export class MultiKeywordsHighlighterService {
   /**
    * Check the input keyword is match with node text content
    */
-  private isMatchedKeyword(highlightedKeyword: string, keyword: IKeyword): boolean {
+  isMatchedKeyword(highlightedKeyword: string, keyword: IKeyword): boolean {
     return (!this.config.caseSensitive && (highlightedKeyword.toLowerCase() === keyword.name.toLowerCase())) ||
     this.config.caseSensitive && (highlightedKeyword === keyword.name);
   }
