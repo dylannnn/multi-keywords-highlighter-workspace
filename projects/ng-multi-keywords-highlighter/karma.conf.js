@@ -29,7 +29,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/multi-keywords-highlighter'),
+      dir: require('path').join(__dirname, '../../coverage/ng-multi-keywords-highlighter'),
       subdir: '.',
       reporters: [
         { type: 'html', subdir: 'report-html' },

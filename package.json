@@ -1,7 +1,7 @@
 {
-  "name": "@amfrontender/multi-keywords-highlighter-workspace",
-  "version": "0.0.2",
-  "repository": "dylannnn/multi-keywords-highlighter-workspace",
+  "name": "@amfrontender/ng-multi-keywords-highlighter-workspace",
+  "version": "0.0.3",
+  "repository": "dylannnn/ng-multi-keywords-highlighter-workspace",
   "scripts": {
     "==== Sandbox =====": "echo '================== SANDBOX =================='",
     "start:sandbox": "ng serve sandbox -o",
@@ -11,37 +11,17 @@
     "e2e:sandbox": "ng e2e sandbox",
     "==== Library =====": "echo '================== LIBRARY =================='",
     "develop:lib-all": "run-s develop:lib develop:scss-bundle",
-    "develop:lib": "ng build multi-keywords-highlighter --watch",
-    "develop:scss-bundle": "scss-bundle --config projects/multi-keywords-highlighter/scss-bundle.config.json --project projects/multi-keywords-highlighter --watch",
-    "build:lib": "ng build multi-keywords-highlighter --prod && scss-bundle --config projects/multi-keywords-highlighter/scss-bundle.config.json --project projects/multi-keywords-highlighter",
-    "test:lib": "ng test multi-keywords-highlighter --watch --code-coverage --browsers=ChromeHeadless",
-    "test:lib:ci": "ng test multi-keywords-highlighter --watch=false --no-progress --code-coverage --browsers=ChromeHeadlessNoSandbox",
-    "lint:lib": "ng lint multi-keywords-highlighter",
-    "==== Release =====": "echo '================== RELEASE =================='",
-    "release:local": "semantic-release --no-ci --debug",
-    "release": "semantic-release",
+    "develop:lib": "ng build ng-multi-keywords-highlighter --watch",
+    "develop:scss-bundle": "scss-bundle --config projects/ng-multi-keywords-highlighter/scss-bundle.config.json --project projects/ng-multi-keywords-highlighter --watch",
+    "build:lib": "ng build ng-multi-keywords-highlighter --prod && scss-bundle --config projects/ng-multi-keywords-highlighter/scss-bundle.config.json --project projects/ng-multi-keywords-highlighter",
+    "test:lib": "ng test ng-multi-keywords-highlighter --watch --code-coverage --browsers=ChromeHeadless",
+    "test:lib:ci": "ng test ng-multi-keywords-highlighter --watch=false --no-progress --code-coverage --browsers=ChromeHeadlessNoSandbox",
+    "lint:lib": "ng lint ng-multi-keywords-highlighter",
     "==== Documentation =====": "echo '================== DOCUMENTATION =================='",
     "docs:html:serve:watch": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -s -o -w -e html -d ./documentation/",
-    "docs:html:serve": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -s -o -e html -d ./documentation/",
-    "docs:html": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -e html -d ./documentation/",
-    "docs:json": "compodoc -p projects/multi-keywords-highlighter/tsconfig.compodoc.json -e json -d ."
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/changelog",
-      "@semantic-release/github",
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "dist/multi-keywords-highlighter"
-        }
-      ],
-      "@semantic-release/release-notes-generator"
-    ]
+    "docs:html:serve": "compodoc -p projects/ng-multi-keywords-highlighter/tsconfig.compodoc.json -s -o -e html -d ./documentation/",
+    "docs:html": "compodoc -p projects/ng-multi-keywords-highlighter/tsconfig.compodoc.json -e html -d ./documentation/",
+    "docs:json": "compodoc -p projects/ng-multi-keywords-highlighter/tsconfig.compodoc.json -e json -d ."
   },
   "engines": {
     "node": ">= 12",
@@ -68,7 +48,6 @@
     "@angular/cli": "~11.2.1",
     "@angular/compiler-cli": "~11.2.1",
     "@compodoc/compodoc": "^1.1.11",
-    "@semantic-release/changelog": "^5.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
@@ -83,7 +62,6 @@
     "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
     "scss-bundle": "^3.1.2",
-    "semantic-release": "^17.3.9",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.1.2"

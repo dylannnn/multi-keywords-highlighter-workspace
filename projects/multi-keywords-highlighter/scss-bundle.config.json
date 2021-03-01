@@ -1,9 +1,0 @@
-{
-  "bundlerOptions": {
-    "entryFile": "./projects/multi-keywords-highlighter/src/lib/multi-keywords-highlighter.theme.scss",
-    "rootDir": "./projects/multi-keywords-highlighter",
-    "outFile": "./dist/multi-keywords-highlighter/multi-keywords-highlighter.theme.scss",
-    "ignoreImports": ["~@angular/.*"],
-    "logLevel": "error"
-  }
-}

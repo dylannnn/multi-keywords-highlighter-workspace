@@ -12,9 +12,9 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "multi-keywords-highlighter": [
-        "dist/multi-keywords-highlighter/multi-keywords-highlighter",
-        "dist/multi-keywords-highlighter"
+      "ng-multi-keywords-highlighter": [
+        "dist/ng-multi-keywords-highlighter/multi-keywords-highlighter",
+        "dist/ng-multi-keywords-highlighter"
       ]
     },
     "experimentalDecorators": true,

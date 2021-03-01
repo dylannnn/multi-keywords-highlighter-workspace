@@ -1,4 +1,4 @@
-# MultiKeywordsHighlighter
+# NG MultiKeywordsHighlighter
 
 ## Install Required Peer Dependencies
 
@@ -37,7 +37,7 @@ Add below html to your index.html <head> tag.
 Import `MultiKeywordsHighlighterModule` to you `app.module.ts`
 
 ```typescript
-import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'multi-keywords-highlighter';
+import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'ng-multi-keywords-highlighter';
 ...
 
 @NgModule({

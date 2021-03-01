@@ -1,9 +1,9 @@
-# Multi Keywords Highlighter Workspace
+# NG Multi Keywords Highlighter Workspace
 
-![main](https://img.shields.io/travis/dylannnn/multi-keywords-highlighter-workspace/main?label=main&logo=github) ![master](https://img.shields.io/travis/dylannnn/multi-keywords-highlighter-workspace/master?label=master&logo=github) ![CircleCI](https://img.shields.io/circleci/build/github/dylannnn/multi-keywords-highlighter-workspace?logo=circleci)
-[![version](https://img.shields.io/badge/version-0.0.2-green.svg?style=flat)](https://www.npmjs.com/package/@amfrontender/multi-keywords-highlighter-workspace) [![Angular](https://img.shields.io/badge/11.2.1-dd0031.svg?style=flat&logo=angular)](https://angular.io/) [![codecov master](https://codecov.io/gh/dylannnn/multi-keywords-highlighter-workspace/branch/master/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/multi-keywords-highlighter-workspace) [![codecov main](https://codecov.io/gh/dylannnn/multi-keywords-highlighter-workspace/branch/main/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/multi-keywords-highlighter-workspace) ![npm](https://img.shields.io/npm/dm/@amfrontender/multi-keywords-highlighter-workspace?logo=npm) ![GitHub](https://img.shields.io/github/license/dylannnn/multi-keywords-highlighter-workspace) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/dylannnn/multi-keywords-highlighter-workspace) ![GitHub package.json version](https://img.shields.io/github/package-json/v/dylannnn/multi-keywords-highlighter-workspace) ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dylannnn/multi-keywords-highlighter-workspace) [![Known Vulnerabilities](https://snyk.io/test/github/dylannnn/multi-keywords-highlighter-workspace/badge.svg?targetFile=projects/multi-keywords-highlighter/package.json)](https://snyk.io/test/github/dylannnn/multi-keywords-highlighter-workspace?targetFile=projects/multi-keywords-highlighter/package.json)
+![main](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/main?label=main&logo=github) ![master](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/master?label=master&logo=github) ![CircleCI](https://img.shields.io/circleci/build/github/dylannnn/ng-multi-keywords-highlighter-workspace?logo=circleci)
+[![version](https://img.shields.io/badge/version-0.0.3-green.svg?style=flat)](https://www.npmjs.com/package/@amfrontender/ng-multi-keywords-highlighter-workspace) [![Angular](https://img.shields.io/badge/11.2.1-dd0031.svg?style=flat&logo=angular)](https://angular.io/) [![codecov master](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/master/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/multi-keywords-highlighter-workspace) [![codecov main](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/main/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace) ![npm](https://img.shields.io/npm/dm/@amfrontender/ng-multi-keywords-highlighter-workspace?logo=npm) ![GitHub](https://img.shields.io/github/license/dylannnn/ng-multi-keywords-highlighter-workspace) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/dylannnn/ng-multi-keywords-highlighter-workspace) ![GitHub package.json version](https://img.shields.io/github/package-json/v/dylannnn/ng-multi-keywords-highlighter-workspace) ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dylannnn/ng-multi-keywords-highlighter-workspace) [![Known Vulnerabilities](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace/badge.svg?targetFile=projects/ng-multi-keywords-highlighter/package.json)](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace?targetFile=projects/multi-keywords-highlighter/package.json)
 
-Multi Keywords Highlighter is an Angular library that build together with Angular material.
+NG Multi Keywords Highlighter is an Angular library that build together with Angular material.
 
 It's create a fun way for searching an Angular web page for the interesting bits by input a keyword or a keyword list. This library could be assistive for searching heavy data page [ At least for me :) ].
 
@@ -18,7 +18,7 @@ An authentication feature will be developed in a later stage to store encrypted 
 
 ### Install Required Peer Dependencies
 
-`npm install @angular/material @angular/cdk @angular/flex-layout @amfrontender/multi-keywords-highlighter-workspace`
+`npm install @angular/material @angular/cdk @angular/flex-layout @amfrontender/ng-multi-keywords-highlighter-workspace`
 
 ### Usage
 
@@ -53,7 +53,7 @@ Add below html to your index.html <head> tag.
 Import `MultiKeywordsHighlighterModule` to you `app.module.ts`
 
 ```typescript
-import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'multi-keywords-highlighter';
+import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'ng-multi-keywords-highlighter';
 ...
 
 @NgModule({
