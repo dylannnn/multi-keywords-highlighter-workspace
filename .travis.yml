@@ -13,6 +13,10 @@ cache:
 
 install:
   - npm install
+  - npm install codecov -D
 
 script:
   - npm run test:lib:ci
+
+after_success:
+  - codecov -f coverage/multi-keywords-highlighter/report-lcov/lcov.info
