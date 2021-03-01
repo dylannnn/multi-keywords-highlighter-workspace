@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './demo/demo.component';
-import { MultiKeywordsHighlighterComponent } from 'multi-keywords-highlighter';
+import { MultiKeywordsHighlighterComponent } from 'ng-multi-keywords-highlighter';
 
 const routes: Routes = [
   {

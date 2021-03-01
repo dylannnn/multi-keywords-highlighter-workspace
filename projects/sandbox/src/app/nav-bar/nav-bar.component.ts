@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
-import { IKeyword } from 'multi-keywords-highlighter';
+import { IKeyword } from 'ng-multi-keywords-highlighter';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

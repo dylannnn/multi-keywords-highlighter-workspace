@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IKeyword } from 'multi-keywords-highlighter';
+import { IKeyword } from 'ng-multi-keywords-highlighter';
 import { Info } from '../models/info.class';
 
 @Component({

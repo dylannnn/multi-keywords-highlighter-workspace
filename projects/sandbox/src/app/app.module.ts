@@ -5,7 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
-import { MATERIAL_COLOR, LABEL_POSITION, MultiKeywordsHighlighterModule } from 'multi-keywords-highlighter';
+import { MATERIAL_COLOR, LABEL_POSITION, MultiKeywordsHighlighterModule } from 'ng-multi-keywords-highlighter';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';

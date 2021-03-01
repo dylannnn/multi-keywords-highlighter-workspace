@@ -3,30 +3,30 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "multi-keywords-highlighter": {
+    "ng-multi-keywords-highlighter": {
       "projectType": "library",
-      "root": "projects/multi-keywords-highlighter",
-      "sourceRoot": "projects/multi-keywords-highlighter/src",
+      "root": "projects/ng-multi-keywords-highlighter",
+      "sourceRoot": "projects/ng-multi-keywords-highlighter/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/multi-keywords-highlighter/tsconfig.lib.json",
-            "project": "projects/multi-keywords-highlighter/ng-package.json"
+            "tsConfig": "projects/ng-multi-keywords-highlighter/tsconfig.lib.json",
+            "project": "projects/ng-multi-keywords-highlighter/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/multi-keywords-highlighter/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-multi-keywords-highlighter/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/multi-keywords-highlighter/src/test.ts",
-            "tsConfig": "projects/multi-keywords-highlighter/tsconfig.spec.json",
-            "karmaConfig": "projects/multi-keywords-highlighter/karma.conf.js",
+            "main": "projects/ng-multi-keywords-highlighter/src/test.ts",
+            "tsConfig": "projects/ng-multi-keywords-highlighter/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-multi-keywords-highlighter/karma.conf.js",
             "styles": [
               "projects/sandbox/src/styles.scss"
             ]
@@ -36,8 +36,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/multi-keywords-highlighter/tsconfig.lib.json",
-              "projects/multi-keywords-highlighter/tsconfig.spec.json"
+              "projects/ng-multi-keywords-highlighter/tsconfig.lib.json",
+              "projects/ng-multi-keywords-highlighter/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -177,5 +177,5 @@
       }
     }
   },
-  "defaultProject": "multi-keywords-highlighter"
+  "defaultProject": "ng-multi-keywords-highlighter"
 }
