@@ -1,7 +1,18 @@
 version: 2.1
+description: Circle CI
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.2.0
+jobs:
+  test_library:
+    executor:
+      name: node/default
+      tag: '15.10'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test:lib:ci
 workflows:
-  node-tests:
+  test_my_app:
     jobs:
-      - node/test
+      - test_library
