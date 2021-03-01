@@ -1,7 +1,18 @@
 # NG Multi Keywords Highlighter Workspace
 
-![main](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/main?label=main&logo=github) ![master](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/master?label=master&logo=github) ![CircleCI](https://img.shields.io/circleci/build/github/dylannnn/ng-multi-keywords-highlighter-workspace?logo=circleci)
-[![version](https://img.shields.io/badge/version-0.0.3-green.svg?style=flat)](https://www.npmjs.com/package/@amfrontender/ng-multi-keywords-highlighter-workspace) [![Angular](https://img.shields.io/badge/11.2.1-dd0031.svg?style=flat&logo=angular)](https://angular.io/) [![codecov master](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/master/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace) [![codecov main](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/main/graph/badge.svg?token=NDWCLR55Y7)](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace) ![npm](https://img.shields.io/npm/dm/@amfrontender/ng-multi-keywords-highlighter-workspace?logo=npm) ![GitHub](https://img.shields.io/github/license/dylannnn/ng-multi-keywords-highlighter-workspace) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/dylannnn/ng-multi-keywords-highlighter-workspace) ![GitHub package.json version](https://img.shields.io/github/package-json/v/dylannnn/ng-multi-keywords-highlighter-workspace) ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dylannnn/ng-multi-keywords-highlighter-workspace) [![Known Vulnerabilities](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace/badge.svg?targetFile=projects/ng-multi-keywords-highlighter/package.json)](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace?targetFile=projects/multi-keywords-highlighter/package.json)
+![main](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/main?label=main&logo=github)
+![develop](https://img.shields.io/travis/dylannnn/ng-multi-keywords-highlighter-workspace/develop?label=develop&logo=github)
+![CircleCI](https://img.shields.io/circleci/build/github/dylannnn/ng-multi-keywords-highlighter-workspace?logo=circleci)
+[![version](https://img.shields.io/badge/version-0.0.3-green.svg?style=flat)](https://www.npmjs.com/package/@amfrontender/ng-multi-keywords-highlighter-workspace)
+[![Angular](https://img.shields.io/badge/11.2.1-dd0031.svg?style=flat&logo=angular)](https://angular.io/)
+[![codecov](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/main/graph/badge.svg?token=y3SsiijLVp)](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace)
+[![codecov](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace/branch/develop/graph/badge.svg?token=y3SsiijLVp)](https://codecov.io/gh/dylannnn/ng-multi-keywords-highlighter-workspace)
+![npm](https://img.shields.io/npm/dm/@amfrontender/ng-multi-keywords-highlighter-workspace?logo=npm)
+![GitHub](https://img.shields.io/github/license/dylannnn/ng-multi-keywords-highlighter-workspace)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/dylannnn/ng-multi-keywords-highlighter-workspace)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/dylannnn/ng-multi-keywords-highlighter-workspace)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dylannnn/ng-multi-keywords-highlighter-workspace)
+[![Known Vulnerabilities](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace/badge.svg?targetFile=projects/ng-multi-keywords-highlighter/package.json)](https://snyk.io/test/github/dylannnn/ng-multi-keywords-highlighter-workspace?targetFile=projects/multi-keywords-highlighter/package.json)
 
 NG Multi Keywords Highlighter is an Angular library that build together with Angular material.
 
