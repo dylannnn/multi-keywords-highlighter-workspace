@@ -69,6 +69,8 @@ Import `MultiKeywordsHighlighterModule` to your `app.module.ts`
 
 ```typescript
 import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from '@amfrontender/ng-multi-keywords-highlighter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 ...
 
 @NgModule({
@@ -77,6 +79,8 @@ import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from '@amfrontender/ng
   ],
   imports: [
     ...
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     MultiKeywordsHighlighterModule.forRoot({
       themeColor: MATERIAL_COLOR.PRIMARY
     })
