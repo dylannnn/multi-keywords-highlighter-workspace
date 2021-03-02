@@ -1,10 +1,11 @@
 {
-  "name": "ng-multi-keywords-highlighter",
+  "name": "@amfrontender/ng-multi-keywords-highlighter",
   "version": "0.0.3",
-  "description": "Angular lib-multi-keywords-highlighter is an Angular library that build together with Angular material.",
+  "description": "NG Multi Keywords Highlighter is an Angular library that builds together with Angular material.",
   "author": "Yunfei Li<dylannnnlee@gmail.com>",
   "license": "MIT",
-  "repository": "dylannnn/ng-multi-keywords-highlighter-workspace",
+  "repository": "https://github.com/dylannnn/ng-multi-keywords-highlighter-workspace/tree/main/projects/ng-multi-keywords-highlighter",
+  "homepage": "https://github.com/dylannnn/ng-multi-keywords-highlighter-workspace",
   "engines": {
     "node": ">= 12",
     "npm": ">= 6"
@@ -13,7 +14,7 @@
     "angular",
     "keywords",
     "highlighter",
-    "multi keywords highlighter"
+    "multi-keywords highlighter"
   ],
   "peerDependencies": {
     "@angular/common": "~11.2.1",
