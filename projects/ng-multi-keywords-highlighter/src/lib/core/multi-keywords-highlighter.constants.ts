@@ -4,7 +4,7 @@
  */
 export class MultiKeywordsHighlighterConstants {
   static readonly APP_NAME = 'Multi keywords highlighter';
-  static readonly APP_VERSION = '0.0.1';
+  static readonly APP_VERSION = '0.0.3';
   static readonly COPYRIGHT = {
     AUTHOR: 'Amfrontender',
     CONTACT: 'https://github.com/Amfrontender'
