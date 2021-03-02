@@ -28,7 +28,7 @@
     "deploy:demo": "echo TODO deploy:demo",
     "deploy:docs": "echo TODO deploy:docs",
     "==== Publish =====": "echo ================== Publish ==================",
-    "publish:lib": "npm publish --access public",
+    "publish:lib": "cd dist/ng-multi-keywords-highlighter && npm publish --access public",
     "un-publish:lib": "npm unpublish @amfrontender/ng-multi-keywords-highlighter-workspace@<version>"
   },
   "engines": {
