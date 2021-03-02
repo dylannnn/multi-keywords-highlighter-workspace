@@ -56,15 +56,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 Add below html to your index.html <head> tag.
 
+Option
 ```html
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+```
+
+Required
+```html
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
-Import `MultiKeywordsHighlighterModule` to you `app.module.ts`
+Import `MultiKeywordsHighlighterModule` to your `app.module.ts`
 
 ```typescript
-import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'ng-multi-keywords-highlighter';
+import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from '@amfrontender/ng-multi-keywords-highlighter';
 ...
 
 @NgModule({
@@ -88,6 +93,7 @@ import { MATERIAL_COLOR, MultiKeywordsHighlighterModule } from 'ng-multi-keyword
 - [ ] Save to localstorage
 - [ ] Themes
 - [ ] CI/CD Release
+- [ ] Deploy demo, documents to Firebase
 - [x] Compodoc Documentation
 - [ ] Storybook
 
